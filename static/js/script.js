@@ -17,7 +17,7 @@ function reset() {
 function generateCat() {
   var catDiv = document.createElement('div');
   catDiv.innerHTML = "<img class='cat-image' src='http://thecatapi.com/api/images/get?format=src&type=gif&size=small'>"
-  document.getElementById('catGeneratorDiv').appendChild(catDiv);
+  document.getElementById('flex-cat-gen').appendChild(catDiv);
 }
 
 
@@ -101,6 +101,4 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage) {
   document.getElementById('flex-box-rps-div').appendChild(humanDiv);
   document.getElementById('flex-box-rps-div').appendChild(messageDiv);
   document.getElementById('flex-box-rps-div').appendChild(botDiv);
-
-
 }
