@@ -326,12 +326,12 @@ function computeWinner() {
     } else if (YOU['score'] <= 21 || YOU['score'] > DEALER['score']) {
       blackjackGame['wins']++;
       winner = YOU;
-    }
+    
   //condition when user busts but dealer doesnt
-  } else if (YOU['score'] > 21 && DEALER['score'] <= 21) {
-   console.log('You lost');
-   blackjackGame['losses']++;
-   winner = DEALER;
+    } else if (YOU['score'] > 21 && DEALER['score'] <= 21) {
+     console.log('You lost');
+     blackjackGame['losses']++;
+     winner = DEALER;
 
    //condition when you And dealer busts
   } else if (YOU['score'] > 21 && DEALER['score'] > 21) {
