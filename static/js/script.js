@@ -323,7 +323,7 @@ function computeWinner() {
       blackjackGame['draws']++;
       
     } else if (YOU['score'] <= 21 || YOU['score'] > DEALER['score']) {
-      blackjackGame['win']++;
+      blackjackGame['wins']++;
       winner = YOU;
     }
   //condition when user busts but dealer doesnt
