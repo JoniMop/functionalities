@@ -323,6 +323,11 @@ function computeWinner() {
       console.log('You drew');
       blackjackGame['draws']++;
       
+    } else if (DEALER['score'] < YOU['score']) {
+    console.log('You win!');
+    blackjackGame['wins']++;
+    winner = DEALER;
+      
     } else if (YOU['score'] <= 21 || YOU['score'] > DEALER['score']) {
       blackjackGame['wins']++;
       winner = YOU;
