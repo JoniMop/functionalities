@@ -21,6 +21,7 @@ function generateCat() {
 }
 
 
+
 // Challenge 3: Rock, Paper, Scissors
 
 function rpsGame(yourChoice) {
