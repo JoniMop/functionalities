@@ -1,4 +1,4 @@
-// Challenge 1: Your Age in Days
+ // Challenge 1: Your Age in Days
 function ageInDays() {
   var birthYear = prompt("What year were you born... Good friend?");
   var ageInDays = (2018 - birthYear) * 365;
@@ -19,7 +19,6 @@ function generateCat() {
   catDiv.innerHTML = "<img class='cat-image' src='http://thecatapi.com/api/images/get?format=src&type=gif&size=small'>"
   document.getElementById('flex-cat-gen').appendChild(catDiv);
 }
-
 
 
 // Challenge 3: Rock, Paper, Scissors
@@ -205,7 +204,7 @@ function blackjackHit() {
 }
 
 function randomCard() {
-  let randomIndex = Math.floor(Math.random() * 13);
+  let randomIndex = Math.floor(Math.random() * 12);
   return blackjackGame['cards'][randomIndex];
 }
 
@@ -235,7 +234,7 @@ function blackjackDeal() {
     for (i=0; i < yourImages.length; i++) {
       yourImages[i].remove();
     }
-    for (i=0; i<dealerImages.length; i++) {
+    for (i=0; i < dealerImages.length; i++) {
       dealerImages[i].remove();
     }
 
@@ -322,21 +321,15 @@ function computeWinner() {
     } else if (YOU['score'] === DEALER['score']) {
       console.log('You drew');
       blackjackGame['draws']++;
-      
-    } else if (DEALER['score'] < YOU['score']) {
-    console.log('You win!');
-    blackjackGame['wins']++;
-    winner = YOU;
-      
     } else if (YOU['score'] <= 21 && YOU['score'] > DEALER['score']) {
-      blackjackGame['wins']++;
+      blackjackGame['win']++;
       winner = YOU;
-    
+    }
   //condition when user busts but dealer doesnt
-    } else if (YOU['score'] > 21 && DEALER['score'] <= 21) {
-     console.log('You lost');
-     blackjackGame['losses']++;
-     winner = DEALER;
+  } else if (YOU['score'] > 21 && DEALER['score'] <= 21) {
+   console.log('You lost');
+   blackjackGame['losses']++;
+   winner = DEALER;
 
    //condition when you And dealer busts
   } else if (YOU['score'] > 21 && DEALER['score'] > 21) {
@@ -351,54 +344,32 @@ function computeWinner() {
 
 
 
-function showResult() {
+function showResult(winner) {
   let message, messageColor;
 
-   if (blackjackGame['turnsOver'] === true) {
+  if (blackjackGame['turnsOver'] === true) {
 
-    if (YOU['score'] <= 21) {
 
-      // condition: higher score than dealer's or when dealer busts but you're 21 or under.
-      if (YOU['score'] > DEALER['score'] || (DEALER['score'] > 21)) {
-        blackjackGame['wins']++;
-        document.querySelector('#wins').textContent =  blackjackGame['wins']; 
-        message = 'You won!';
-        messageColor = 'green';
-        winSound.play();
+    if (winner === YOU) {
+      document.querySelector('#wins').textContent = blackjackGame['wins'];
+      message = 'You won!';
+      messageColor = 'green';
+      winSound.play();
 
-      } else if (YOU['score'] < DEALER['score']) {
-        blackjackGame['losses']++;
-        document.querySelector('#losses').textContent =  blackjackGame['losses']; 
-        message = 'You lost!';
-        messageColor = 'red';
-        lossSound.play();
-
-      } else if (YOU['score'] === DEALER['score']) {
-        blackjackGame['draws']++;
-        document.querySelector('#draws').textContent = blackjackGame['draws']; 
-        message = 'You drew!';
-        messageColor = 'black';
-      }
-
-      // condition: user busts but dealer doesn't
-    } else if (YOU['score'] > 21 && DEALER['score'] <= 21) {
-      blackjackGame['losses']++;
+    } else if (winner === DEALER){
       document.querySelector('#losses').textContent = blackjackGame['losses'];
-      message = 'You lost!';
+      message = 'You lost';
       messageColor = 'red';
       lossSound.play();
 
-    // condition: when DEALERh bust.
-    } else if (YOU['score'] > 21 && DEALER['score'] > 21) {
-      blackjackGame['draws']++;
+    } else {
       document.querySelector('#draws').textContent = blackjackGame['draws'];
       message = 'You drew!';
       messageColor = 'black';
     }
-  }
 
 
     document.querySelector('#blackjack-result').textContent = message;
     document.querySelector('#blackjack-result').style.color = messageColor;
-
- 
+  }
+}
