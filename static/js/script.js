@@ -351,7 +351,7 @@ function computeWinner() {
 
 
 
-function showResult(winner) {
+function showResult() {
   let message, messageColor;
 
    if (blackjackGame['turnsOver'] === true) {
